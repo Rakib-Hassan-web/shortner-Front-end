@@ -1,10 +1,10 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:8000/", 
-  headers: {
-    "Content-Type": "application/json",
-  },
+    baseURL: "http://localhost:8000/",
+    headers: {
+        "Content-Type": "application/json",
+    },
 });
 
 
@@ -12,33 +12,56 @@ const api = axios.create({
 
 // 👉 Request Interceptor (token add করার জন্য)
 api.interceptors.request.use(
-  (config) => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
+    (config) => {
+        const token = localStorage.getItem("token");
+        if (token) {
+            config.headers.Authorization = `Bearer ${token}`;
+        }
+        return config;
+    },
+    (error) => {
+        return Promise.reject(error);
     }
-    return config;
-  },
-  (error) => {
-    return Promise.reject(error);
-  }
-); 
+);
 
 
-const AuthServices ={
+const AuthServices = {
 
-    login:  async(email, password) => {
-        const res = await api.post("/auth/login", { email, password });
+    login: async (email, password) => {
+        const res = await api.post("/auth/login", {
+            email,
+            password
+        });
+        return res.data;
+    },
+    registration: async (fullName, email, password) => {
+        const res = await api.post("/auth/registration", {
+            fullName,
+            email,
+            password
+        });
+        return res.data;
+    },
+    getprofile: async () => {
+        const res = await api.post("/auth/getprofile", );
         return res.data;
     }
-    ,
-     registration:  async( fullName,email, password) => {
-        const res = await api.post("/auth/registration", { fullName,email, password });
+}
+
+
+const Urservices = {
+
+    createshort: async (LongUrl) => {
+        const res = await api.post("/url/create", { LongUrl});
         return res.data;
-    }
-    ,
-     getprofile:  async() => {
-        const res = await api.post("/auth/getprofile",);
+
+    },
+
+     getall: async () => {
+        const res = await api.get("/url/getall");
         return res.data;
+
     }
+
+
 }
