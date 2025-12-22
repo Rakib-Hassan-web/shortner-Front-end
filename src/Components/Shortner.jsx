@@ -1,17 +1,28 @@
 import { useState } from "react";
+import { Urservices } from "../api";
 
 const Shortner = () => {
   const [longUrl, setLongUrl] = useState("");
   const [shortUrl, setShortUrl] = useState("");
   const [copied, setCopied] = useState(false);
 
-  const generateShortUrl = () => {
+  const generateShortUrl = async () => {
     if (!longUrl) return;
 
-    const randomCode = Math.random().toString(36).substring(2, 7);
-    const short = `https://sho.rt/${randomCode}`;
 
-    setShortUrl(short);
+    try {
+      const res = await Urservices.createshort(longUrl);
+      
+      setShortUrl(`http://localhost:8000/${res.ShortUrl}`);
+      console.log(res)
+    } catch (error) {
+      console.log(error);
+     
+    }
+    
+    // const short = `https://sho.rt/${randomCode}`;
+
+    // setShortUrl(short);
     setCopied(false);
   };
 
