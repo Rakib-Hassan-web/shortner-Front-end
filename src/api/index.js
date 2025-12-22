@@ -65,3 +65,6 @@ const Urservices = {
 
 
 }
+
+
+export {AuthServices,Urservices}
