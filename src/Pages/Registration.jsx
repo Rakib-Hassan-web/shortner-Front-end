@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+
 import { Link } from 'react-router';
-import CustomInput from '../Components/CustomInput';
+import CustomInput from '../Components/ui/CustomInput';
+import { useForm } from "react-hook-form"
 
 
 const Registration = () => {
@@ -16,7 +17,6 @@ const Registration = () => {
   console.log(watch("example")) // watch input value by passing the name of it
 
 
-  };
 
   return (
     <>
@@ -33,38 +33,43 @@ const Registration = () => {
           </div>
 
           {/* Form */}
-          <form onSubmit={handleRegister} className="flex flex-col gap-4">
+          <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
             <CustomInput
+             {...register("full Name")} 
+
               type="text"
               placeholder="👤 Name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+       
+              // onChange={(e) => setName(e.target.value)}
               className="w-full border border-gray-300 rounded-xl px-4 py-3
               focus:outline-none focus:ring-2 focus:ring-purple-500"
               required
             />
 
             <CustomInput
+             {...register("email")} 
               type="email"
               placeholder="📧 Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              
+              // onChange={(e) => setEmail(e.target.value)}
               className="w-full border border-gray-300 rounded-xl px-4 py-3
               focus:outline-none focus:ring-2 focus:ring-purple-500"
               required
             />
 
             <CustomInput
+             {...register("password")} 
+
               type="password"
               placeholder="🔒 Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+             
+              // onChange={(e) => setPassword(e.target.value)}
               className="w-full border border-gray-300 rounded-xl px-4 py-3
               focus:outline-none focus:ring-2 focus:ring-purple-500"
               required
             />
 
-            <CustomInput
+            {/* <CustomInput
               type="password"
               placeholder="🔒 Confirm Password"
               value={confirmPassword}
@@ -72,7 +77,7 @@ const Registration = () => {
               className="w-full border border-gray-300 rounded-xl px-4 py-3
               focus:outline-none focus:ring-2 focus:ring-purple-500"
               required
-            />
+            /> */}
 
             <button
               type="submit"
@@ -94,6 +99,7 @@ const Registration = () => {
       </div>
     </>
   );
-};
+  };
+
 
 export default Registration;
