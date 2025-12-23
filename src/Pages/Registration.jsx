@@ -11,9 +11,7 @@ const Registration = () => {
     
     formState: { errors },
   } = useForm()
-  console.log(errors?.fullName?.message);
-  console.log(errors?.email?.message);
-  console.log(errors?.password?.message);
+
 
   const onSubmit = (data) => console.log(data)
 
@@ -26,16 +24,16 @@ const Registration = () => {
 
 
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-400 via-purple-400 to-pink-400 px-4">
-        {/* Glass Card */}
+        {/* -------------------Glass ---------Card */}
         <div className="w-full max-w-md bg-white/90 backdrop-blur-lg p-8 rounded-3xl shadow-2xl">
           
-          {/* Header */}
+          {/* ----------------Header ---------------------*/}
           <div className="text-center mb-6">
             <h1 className="text-3xl font-extrabold text-gray-800">📝 Register</h1>
             <p className="text-gray-600 mt-2">Create your account to get started</p>
           </div>
 
-          {/* Form */}
+          {/* ---------------------Form--------------------- */} 
           <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
             <CustomInput
              {...register("fullName", { required: "FullName is required" })} 
@@ -43,9 +41,10 @@ const Registration = () => {
               type="text"
               placeholder="👤 Name"
        
-              // onChange={(e) => setName(e.target.value)}
+              
               className="w-full border border-gray-300 rounded-xl px-4 py-3
               focus:outline-none focus:ring-2 focus:ring-purple-500"
+              error={errors?.fullName?.message}
            
             />
 
@@ -54,9 +53,10 @@ const Registration = () => {
               type="email"
               placeholder="📧 Email"
               
-              // onChange={(e) => setEmail(e.target.value)}
+              
               className="w-full border border-gray-300 rounded-xl px-4 py-3
               focus:outline-none focus:ring-2 focus:ring-purple-500"
+              error={errors?.email?.message}
              
             />
 
@@ -65,22 +65,13 @@ const Registration = () => {
 
               type="password"
               placeholder="🔒 Password"
-             
-              // onChange={(e) => setPassword(e.target.value)}
+           
               className="w-full border border-gray-300 rounded-xl px-4 py-3
               focus:outline-none focus:ring-2 focus:ring-purple-500"
+              error={errors?.password?.message}
              
             />
 
-            {/* <CustomInput
-              type="password"
-              placeholder="🔒 Confirm Password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              className="w-full border border-gray-300 rounded-xl px-4 py-3
-              focus:outline-none focus:ring-2 focus:ring-purple-500"
-              required
-            /> */}
 
             <button
               type="submit"
@@ -91,7 +82,7 @@ const Registration = () => {
             </button>
           </form>
 
-          {/* Extra Links */}
+
           <div className="mt-4 text-center text-gray-600 text-sm">
             Already have an account?{' '}
             <Link to="/login" className="text-indigo-600 font-medium hover:underline">
