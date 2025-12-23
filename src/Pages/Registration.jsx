@@ -11,6 +11,9 @@ const Registration = () => {
     
     formState: { errors },
   } = useForm()
+  console.log(errors?.fullName?.message);
+  console.log(errors?.email?.message);
+  console.log(errors?.password?.message);
 
   const onSubmit = (data) => console.log(data)
 
@@ -35,7 +38,7 @@ const Registration = () => {
           {/* Form */}
           <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
             <CustomInput
-             {...register("fullName")} 
+             {...register("fullName", { required: "FullName is required" })} 
 
               type="text"
               placeholder="👤 Name"
@@ -47,7 +50,7 @@ const Registration = () => {
             />
 
             <CustomInput
-             {...register("email")} 
+             {...register("email", {required: "Email is required"})} 
               type="email"
               placeholder="📧 Email"
               
@@ -58,7 +61,7 @@ const Registration = () => {
             />
 
             <CustomInput
-             {...register("password")} 
+             {...register("password", {required: "Password is required"})} 
 
               type="password"
               placeholder="🔒 Password"
