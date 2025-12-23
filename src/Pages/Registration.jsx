@@ -4,19 +4,18 @@ import CustomInput from '../Components/CustomInput';
 
 
 const Registration = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+ const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm()
 
-  const handleRegister = (e) => {
-    e.preventDefault();
-    if (password !== confirmPassword) {
-      alert("Password doesn't match!");
-      return;
-    }
-    // ekhane registration logic add korte paren
-    console.log({ name, email, password, confirmPassword });
+  const onSubmit = (data) => console.log(data)
+
+  console.log(watch("example")) // watch input value by passing the name of it
+
+
   };
 
   return (
@@ -45,7 +44,7 @@ const Registration = () => {
               required
             />
 
-            <input
+            <CustomInput
               type="email"
               placeholder="📧 Email"
               value={email}
@@ -55,7 +54,7 @@ const Registration = () => {
               required
             />
 
-            <input
+            <CustomInput
               type="password"
               placeholder="🔒 Password"
               value={password}
@@ -65,7 +64,7 @@ const Registration = () => {
               required
             />
 
-            <input
+            <CustomInput
               type="password"
               placeholder="🔒 Confirm Password"
               value={confirmPassword}
