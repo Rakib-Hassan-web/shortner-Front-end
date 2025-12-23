@@ -10,13 +10,7 @@ const Shortner = () => {
     if (!longUrl) return;
 
 
-    try {
-      const res = await Urservices.createshort(longUrl);
-      
-      setShortUrl(`http://localhost:8000/${res.ShortUrl}`);
-      console.log(res)
-    } catch (error) {
-      console.log(error);
+    
      
     }
     
