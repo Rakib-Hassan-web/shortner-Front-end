@@ -75,15 +75,7 @@ const Shortner = () => {
     {shortUrl && (
       <div className="mt-6 bg-gray-50 border rounded-xl p-4 flex items-center justify-between gap-3">
         <a
-          href={shortUrl}
-          target="_blank"
-          rel="noreferrer"
-          className="text-indigo-600 font-medium truncate"
-        >
-          🔗 {shortUrl}
-        </a>
 
-        <button
           onClick={copyToClipboard}
           className={`px-4 py-2 rounded-lg text-sm font-semibold transition
             ${
