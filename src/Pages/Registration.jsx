@@ -8,13 +8,13 @@ const Registration = () => {
  const {
     register,
     handleSubmit,
-    watch,
+    
     formState: { errors },
   } = useForm()
 
   const onSubmit = (data) => console.log(data)
 
-  console.log(watch("example")) // watch input value by passing the name of it
+ 
 
 
 
@@ -35,7 +35,7 @@ const Registration = () => {
           {/* Form */}
           <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
             <CustomInput
-             {...register("full Name")} 
+             {...register("fullName")} 
 
               type="text"
               placeholder="👤 Name"
@@ -43,7 +43,7 @@ const Registration = () => {
               // onChange={(e) => setName(e.target.value)}
               className="w-full border border-gray-300 rounded-xl px-4 py-3
               focus:outline-none focus:ring-2 focus:ring-purple-500"
-              required
+           
             />
 
             <CustomInput
@@ -54,7 +54,7 @@ const Registration = () => {
               // onChange={(e) => setEmail(e.target.value)}
               className="w-full border border-gray-300 rounded-xl px-4 py-3
               focus:outline-none focus:ring-2 focus:ring-purple-500"
-              required
+             
             />
 
             <CustomInput
@@ -66,7 +66,7 @@ const Registration = () => {
               // onChange={(e) => setPassword(e.target.value)}
               className="w-full border border-gray-300 rounded-xl px-4 py-3
               focus:outline-none focus:ring-2 focus:ring-purple-500"
-              required
+             
             />
 
             {/* <CustomInput
