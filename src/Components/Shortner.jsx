@@ -20,9 +20,7 @@ const Shortner = () => {
      
     }
     
-    // const short = `https://sho.rt/${randomCode}`;
-
-    // setShortUrl(short);
+   
     setCopied(false);
   };
 
