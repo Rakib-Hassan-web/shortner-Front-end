@@ -30,9 +30,7 @@ const Shortner = () => {
     await navigator.clipboard.writeText(shortUrl);
     setCopied(true);
 
-    setTimeout(() => {
-      setCopied(false);
-    }, 3000);
+  
   };
 
   return (
