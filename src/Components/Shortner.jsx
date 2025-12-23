@@ -63,13 +63,6 @@ const Shortner = () => {
     </div>
 
     {/* Button */}
-    <button
-      onClick={generateShortUrl}
-      className="w-full mt-5 bg-gradient-to-r from-indigo-500 to-pink-400
-      hover:opacity-90 text-white py-3 rounded-xl font-semibold transition"
-    >
-      ✂️ Shorten URL
-    </button>
 
     {/* Result */}
     {shortUrl && (
