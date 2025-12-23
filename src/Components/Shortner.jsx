@@ -93,6 +93,13 @@ const Shortner = () => {
             }`}
         >
           {copied ? "✅ Copied!" : "📋 Copy"}
-        </button>
+      </button> 
       </div>
     )}
+  </div>
+</div>
+
+  );
+};
+
+export default Shortner;

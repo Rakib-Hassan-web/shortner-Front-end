@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router';
+import CustomInput from '../Components/CustomInput';
 
 
 const Registration = () => {
@@ -34,7 +35,7 @@ const Registration = () => {
 
           {/* Form */}
           <form onSubmit={handleRegister} className="flex flex-col gap-4">
-            <input
+            <CustomInput
               type="text"
               placeholder="👤 Name"
               value={name}
