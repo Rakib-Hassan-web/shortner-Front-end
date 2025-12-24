@@ -34,19 +34,17 @@ const AuthServices = {
         });
         return res.data;
     },
-    registration: async (fullName, email, password) => {
-        const res = await api.post("/auth/registration", {
-            fullName,
-            email,
-            password
-        });
+    registration: async (RegisterData) => {
+        const res = await api.post("/auth/registration", RegisterData);
         return res.data;
     },
     getprofile: async () => {
         const res = await api.post("/auth/getprofile", );
         return res.data;
     }
-}
+      
+    }
+
 
 
 const Urservices = {

@@ -1,10 +1,12 @@
 
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import CustomInput from '../Components/ui/CustomInput';
 import { useForm } from "react-hook-form"
+import { AuthServices } from '../api';
 
 
 const Registration = () => {
+  const navigate = useNavigate();
  const {
     register,
     handleSubmit,
@@ -13,7 +15,21 @@ const Registration = () => {
   } = useForm()
 
 
-  const onSubmit = (data) => console.log(data)
+const onSubmit = async (data) => {
+  const payload = {
+    fullName: data.fullName, 
+    email: data.email,
+    password: data.password,
+  };
+
+  try {
+    const res = await AuthServices.registration(payload);
+    console.log(res);
+    navigate('/login')
+  } catch (error) {
+    console.log(error.response?.data);
+  }
+};
 
  
 
