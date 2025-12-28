@@ -7,7 +7,13 @@ import { toast } from 'react-toastify';
 
 
 const Registration = () => {
-  
+  const navigate = useNavigate();
+ const {
+    register,
+    handleSubmit,
+    
+    formState: { errors },
+  } = useForm()
 
 
 const onSubmit = async (data) => {
@@ -17,9 +23,7 @@ const onSubmit = async (data) => {
     password: data.password,
   };
 
-  try {
-    const res = await AuthServices.registration(payload);
-    console.log(res);
+
 
     toast.success("🎉 Registration successful!", {
       position: "top-right",
