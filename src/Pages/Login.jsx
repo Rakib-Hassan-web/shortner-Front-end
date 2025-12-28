@@ -1,16 +1,22 @@
 import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { Link } from 'react-router';
 
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+ 
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-    // ekhane login logic add korte paren
-    console.log('Email:', email, 'Password:', password);
-  };
+   const {
+      register,
+      handleSubmit,
+      setError,
+      formState: { errors },
+    } = useForm()
+
+    const onSubmit = async (data)=>{
+      console.log(data);
+      
+    }
 
   return (
     <>
@@ -26,25 +32,27 @@ const Login = () => {
           </div>
 
           {/* Form */}
-          <form onSubmit={handleLogin} className="flex flex-col gap-4">
+          <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
             <input
               type="email"
-              placeholder="📧 Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              placeholder="📧 Email"                       
               className="w-full border border-gray-300 rounded-xl px-4 py-3
               focus:outline-none focus:ring-2 focus:ring-purple-500"
-              required
+             {...register("email", {required: "Email is required"})} 
+              error={errors?.email?.message}
+          
+           
             />
 
             <input
               type="password"
               placeholder="🔒 Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
               className="w-full border border-gray-300 rounded-xl px-4 py-3
               focus:outline-none focus:ring-2 focus:ring-purple-500"
-              required
+             {...register("password", {required: "Password is required"})} 
+              error={errors?.password?.message}
+
+         
             />
 
             <button
