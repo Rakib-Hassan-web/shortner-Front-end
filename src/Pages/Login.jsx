@@ -16,7 +16,10 @@ const Login = () => {
   const onSubmit = async (data) => {
     try {
       const res = await AuthServices.login(data);
-      console.log(res);
+      
+    navigate('/Dashboard')
+
+
 
 
     } catch (error) {

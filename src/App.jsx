@@ -6,6 +6,7 @@ import Home from './Components/Home'
 import LayoutOne from './Layout/LayoutOne'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Dashboard from './Pages/Dashboard'
 
 const App = () => {
 
@@ -20,6 +21,7 @@ const App = () => {
 
   <Route path='/Login' element={<Login/>}/>
   <Route path='/Registration' element={<Registration/>}/>
+  <Route path='/Dashboard' element={<Dashboard/>}/>
 
   </Route>
 
