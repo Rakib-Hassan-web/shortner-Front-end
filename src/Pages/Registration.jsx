@@ -11,7 +11,7 @@ const Registration = () => {
  const {
     register,
     handleSubmit,
-    
+    setError,
     formState: { errors },
   } = useForm()
 
@@ -37,7 +37,11 @@ const onSubmit = async (data) => {
     }, 3000);
 
   } catch (error) {
-    toast.error(error.response?.data );
+    console.log(error.response.data.messege);
+       if (error.response.data.messege === 'User Already exist') {
+      setError('email',{
+        message: 'User Already exist'
+      })}
   }
 };
 
@@ -98,7 +102,9 @@ const onSubmit = async (data) => {
               error={errors?.password?.message}
              
             />
+          
 
+          <p className=' text-red-500 font-bold text-xl'> {errors?.response?.data?.messege}</p>
 
             <button
               type="submit"
