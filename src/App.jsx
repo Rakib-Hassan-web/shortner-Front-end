@@ -2,9 +2,10 @@ import React from 'react'
 import { BrowserRouter, createBrowserRouter, createRoutesFromElements, Route, RouterProvider, Routes } from 'react-router'
 import Login from './Pages/Login'
 import Registration from './Pages/Registration'
-
 import Home from './Components/Home'
 import LayoutOne from './Layout/LayoutOne'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
 
@@ -32,6 +33,7 @@ const App = () => {
   return (
     <>
 
+     <ToastContainer />
 
  {/* <BrowserRouter>
  

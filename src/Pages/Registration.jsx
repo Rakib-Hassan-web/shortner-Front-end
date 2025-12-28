@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router';
 import CustomInput from '../Components/ui/CustomInput';
 import { useForm } from "react-hook-form"
 import { AuthServices } from '../api';
+import { toast } from 'react-toastify';
 
 
 const Registration = () => {
@@ -15,21 +16,26 @@ const Registration = () => {
   } = useForm()
 
 
-const onSubmit = async (data) => {
-  const payload = {
-    fullName: data.fullName, 
-    email: data.email,
-    password: data.password,
-  };
+
 
   try {
     const res = await AuthServices.registration(payload);
     console.log(res);
-    navigate('/login')
+
+    toast.success("🎉 Registration successful!", {
+      position: "top-right",
+      autoClose: 2000, 
+    });
+
+    setTimeout(() => {
+      navigate('/login');
+    }, 3000);
+
   } catch (error) {
-    console.log(error.response?.data);
+    toast.error(error.response?.data );
   }
 };
+
 
  
 
