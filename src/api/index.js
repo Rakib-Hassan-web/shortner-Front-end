@@ -28,11 +28,8 @@ api.interceptors.request.use(
 
 const AuthServices = {
 
-    login: async (email, password) => {
-        const res = await api.post("/auth/login", {
-            email,
-            password
-        });
+    login: async (LoginDAta) => {
+        const res = await api.post("/auth/login", LoginDAta);
         return res.data;
     },
     registration: async (RegisterData) => {
