@@ -37,13 +37,19 @@ const onSubmit = async (data) => {
     }, 3000);
 
   } catch (error) {
-    console.log(error.response.data.messege);
+    // console.log(error.response.data.messege);
        if (error.response.data.messege === 'User Already exist') {
-      setError('email',{
+     return setError('email',{
         message: 'User Already exist'
       })}
-  }
-};
+
+      setError('Apierror' ,{
+        message: error.response.data.messege
+      })
+
+    }
+  };
+  console.log(errors)
 
 
  
@@ -103,8 +109,12 @@ const onSubmit = async (data) => {
              
             />
           
+              {
+                errors?.Apierror?.message && (
 
-          <p className=' text-red-500 font-bold text-xl'> {errors?.response?.data?.messege}</p>
+                  <p className=' text-red-500 font-bold text-md'> {errors?.Apierror?.message}</p>
+                )
+              }
 
             <button
               type="submit"
