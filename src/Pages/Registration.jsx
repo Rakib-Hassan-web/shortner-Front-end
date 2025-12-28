@@ -31,10 +31,7 @@ const onSubmit = async (data) => {
       position: "top-right",
       autoClose: 2000, 
     });
-
-    setTimeout(() => {
-      navigate('/login');
-    }, 3000);
+;
 
   } catch (error) {
     toast.error(error.response?.data );
