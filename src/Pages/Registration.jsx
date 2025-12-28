@@ -33,6 +33,9 @@ const onSubmit = async (data) => {
     });
 ;
 
+  } catch (error) {
+    toast.error(error.response?.data );
+  }
 };
 
 
