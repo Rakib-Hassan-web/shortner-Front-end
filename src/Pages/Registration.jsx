@@ -16,7 +16,12 @@ const Registration = () => {
   } = useForm()
 
 
-
+const onSubmit = async (data) => {
+  const payload = {
+    fullName: data.fullName,
+    email: data.email,
+    password: data.password,
+  };
 
   try {
     const res = await AuthServices.registration(payload);
