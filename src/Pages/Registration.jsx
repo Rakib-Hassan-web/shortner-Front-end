@@ -23,7 +23,9 @@ const onSubmit = async (data) => {
     password: data.password,
   };
 
-
+  try {
+    const res = await AuthServices.registration(payload);
+    console.log(res);
 
     toast.success("🎉 Registration successful!", {
       position: "top-right",
